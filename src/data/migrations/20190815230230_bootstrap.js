@@ -11,7 +11,7 @@ exports.up = function(knex) {
       users.varchar('profile_image_url', 255);
     })
 
-    .createTable('taste_profile', taste => {
+    .createTable('taste_profiles', taste => {
       taste.increments();
       taste
         .integer('user_id')
@@ -40,5 +40,5 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema
     .dropTableIfExists('users')
-    .dropTableIfExists('taste_profile');
+    .dropTableIfExists('taste_profiles');
 };
