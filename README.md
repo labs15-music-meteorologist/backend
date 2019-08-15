@@ -1,2 +1,2 @@
 # Front-End
-setting up branches
+setting up development
