@@ -6,6 +6,10 @@ exports.up = function(knex) {
         .string('email', 255)
         .notNullable()
         .unique();
+      users
+        .varchar('spotify_user_id')
+        .notNullable()
+        .unique();
       users.varchar('display_name', 128).notNullable();
       users.varchar('country', 255).notNullable();
       users.varchar('profile_image_url', 255);
@@ -39,6 +43,6 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return knex.schema
-    .dropTableIfExists('users')
-    .dropTableIfExists('taste_profiles');
+    .dropTableIfExists('taste_profiles')
+    .dropTableIfExists('users');
 };
