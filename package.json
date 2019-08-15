@@ -4,6 +4,8 @@
   "description": "A backend for music meteorologist powered by node.js, express.js using a postgresql database for persistance.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "development": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
