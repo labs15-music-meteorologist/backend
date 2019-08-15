@@ -1,44 +1,34 @@
 // Update with your config settings.
+require('dotenv').config();
 
 module.exports = {
-
   development: {
-    client: 'sqlite3',
+    client: 'pg',
     connection: {
-      filename: './dev.sqlite3'
-    }
-  },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: process.env.DATABASE_DB,
+      user: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
     },
-    pool: {
-      min: 2,
-      max: 10
-    },
+    useNullAsDefault: true,
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      directory: './data/migrations',
+      tableName: 'knex_migrations',
+    },
+    seeds: {
+      directory: './data/seeds',
+    },
   },
 
   production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
+    useNullAsDefault: true,
     migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
-
+      directory: './data/migrations',
+      tableName: 'knex_migrations',
+    },
+    seeds: {
+      directory: './data/seeds',
+    },
+  },
 };
