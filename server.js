@@ -5,7 +5,7 @@ const moment = require('moment');
 const cors = require('cors');
 
 // Route handler import
-
+const UsersRouter = require('./src/api/users/user-router.js');
 const server = express();
 
 server.use(requestlogger);
@@ -22,6 +22,8 @@ server.get('/', (req, res) => {
 });
 
 // Usage for the server of route handlers
+
+server.use('/v1/users', UsersRouter);
 
 // Custom logging middleware for incoming requests
 function requestlogger(req, res, next) {
