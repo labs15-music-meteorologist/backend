@@ -14,14 +14,8 @@ exports.up = function(knex) {
         .varchar('user_spotify_api_key')
         .notNullable()
         .unique();
-      users
-        .varchar('date_of_birth')
-        .notNullable()
-        .unique();
-      users
-        .varchar('spotify_product_type')
-        .notNullable()
-        .unique();
+      users.varchar('date_of_birth').notNullable();
+      users.varchar('spotify_product_type').notNullable();
       users.varchar('display_name', 128).notNullable();
       users.varchar('country', 255).notNullable();
       users.varchar('profile_image_url', 255);
