@@ -3,6 +3,8 @@ const helmet = require('helmet');
 // Interchange moment for date-fns - slimmer
 const moment = require('moment');
 const cors = require('cors');
+require('dotenv').config();
+const utils = require('./src/utils/environment.js');
 
 // Route handler import
 const UsersRouter = require('./src/api/users/user-router.js');
@@ -22,13 +24,14 @@ server.get('/', (req, res) => {
 });
 
 // Usage for the server of route handlers
-
 server.use('/v1/users', UsersRouter);
 
 // Custom logging middleware for incoming requests
 function requestlogger(req, res, next) {
   console.log(
-    `${req.method} to http://localhost:5000${req.path} at `,
+    `${req.method} to ${utils.getDBEnvironmentPath(process.env.DB_ENV)} on ${
+      req.path
+    } at`,
     moment().format(),
   );
   next();

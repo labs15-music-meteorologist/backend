@@ -1,11 +1,13 @@
 const server = require('./server.js');
-// require('dotenv').config();
+require('dotenv').config();
+const utils = require('./src/utils/environment.js');
 
 const PORT = process.env.PORT || 5000;
 
-// Todo: When DB_ENV is set so it runs on production rename PATH variable to heroku URL
-const PATH = process.env.DB_ENV || 'localhost';
-
 server.listen(PORT, () => {
-  console.log(`\n *** API server running on ${PATH}:${PORT} ***\n`);
+  console.log(
+    `\n *** API server running on ${utils.getDBEnvironmentPath(
+      process.env.DB_ENV,
+    )}:${PORT} ***\n`,
+  );
 });
