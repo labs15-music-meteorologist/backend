@@ -11,11 +11,11 @@ module.exports = {
     },
     useNullAsDefault: true,
     migrations: {
-      directory: './src/data/migrations',
+      directory: './data/migrations',
       tableName: 'knex_migrations',
     },
     seeds: {
-      directory: './src/data/seeds',
+      directory: './data/seeds',
     },
   },
 
@@ -24,11 +24,11 @@ module.exports = {
     connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
     migrations: {
-      directory: './src/data/migrations/20190815230230_bootstrap.js',
+      directory: './data/migrations/20190815230230_bootstrap.js',
       tableName: 'knex_migrations',
     },
     seeds: {
-      directory: './src/data/seeds',
+      directory: './data/seeds',
     },
   },
 
@@ -37,11 +37,11 @@ module.exports = {
     connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
     migrations: {
-      directory: './src/data/migrations',
+      directory: './data/migrations',
       tableName: 'knex_migrations',
     },
     seeds: {
-      directory: './src/data/seeds',
+      directory: './data/seeds',
     },
   },
 
@@ -50,11 +50,11 @@ module.exports = {
     connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
     migrations: {
-      directory: './src/data/migrations',
+      directory: './data/migrations',
       tableName: 'knex_migrations',
     },
     seeds: {
-      directory: './src/data/seeds',
+      directory: './data/seeds',
     },
   },
 };
