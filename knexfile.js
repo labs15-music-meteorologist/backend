@@ -1,5 +1,5 @@
 // Update with your config settings.
-require('dotenv').config();
+/* require('dotenv').config(); */
 
 module.exports = {
   development: {
@@ -17,6 +17,7 @@ module.exports = {
     seeds: {
       directory: './src/data/seeds',
     },
+    debug: true,
   },
 
   deployedDevelopment: {
@@ -30,6 +31,7 @@ module.exports = {
     seeds: {
       directory: './src/data/seeds',
     },
+    debug: true,
   },
 
   staging1: {
@@ -43,6 +45,7 @@ module.exports = {
     seeds: {
       directory: './src/data/seeds',
     },
+    debug: true,
   },
 
   staging2: {
@@ -56,5 +59,6 @@ module.exports = {
     seeds: {
       directory: './src/data/seeds',
     },
+    debug: true,
   },
 };

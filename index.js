@@ -1,5 +1,5 @@
 const server = require('./server.js');
-require('dotenv').config();
+/* require('dotenv').config(); */
 const utils = require('./src/utils/environment.js');
 
 const PORT = process.env.PORT || 5000;
