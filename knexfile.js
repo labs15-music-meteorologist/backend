@@ -17,10 +17,22 @@ module.exports = {
     seeds: {
       directory: './src/data/seeds',
     },
-    debug: true,
   },
 
-  deployedDevelopment: {
+  deployeddevelopment: {
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
+    useNullAsDefault: true,
+    migrations: {
+      directory: './src/data/migrations/20190815230230_bootstrap.js',
+      tableName: 'knex_migrations',
+    },
+    seeds: {
+      directory: './src/data/seeds',
+    },
+  },
+
+  staging: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
@@ -31,10 +43,9 @@ module.exports = {
     seeds: {
       directory: './src/data/seeds',
     },
-    debug: true,
   },
 
-  staging1: {
+  stagingtwo: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
@@ -45,20 +56,5 @@ module.exports = {
     seeds: {
       directory: './src/data/seeds',
     },
-    debug: true,
-  },
-
-  staging2: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
-    useNullAsDefault: true,
-    migrations: {
-      directory: './src/data/migrations',
-      tableName: 'knex_migrations',
-    },
-    seeds: {
-      directory: './src/data/seeds',
-    },
-    debug: true,
   },
 };
