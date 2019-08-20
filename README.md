@@ -21,11 +21,74 @@ Music Meteorologist provides a web application where users can play a guessing g
 - [Supertest](https://www.npmjs.com/package/supertest) - A test module for HTTP assertions
 - [JEST](https://jestjs.io/) - Simple JavaScript testing framework
 
-# Endpoints
+## Endpoints
 
-Coming Soon
+All endpoints are also documented in the [automated Postman documentation](https://documenter.getpostman.com/view/8038461/SVfJUXBn).
+
+The endpoints URLs are environment specific and contain a word that reflects the project/environment on Heroku.
 
 ### General
+
+##### <span style="color:blue">GET [API RUNNING]</span>
+
+```
+https://music-meteorology-development.herokuapp.com
+https://music-meteorology-production.herokuapp.com
+```
+
+- JWT protected (header) :x:
+- payload (body) :x:
+
+<span style="color:red">API Running Response (200 OK)</span>:
+
+```
+Welcome to the [DB_ENV] environment API of Music Meteorologist!
+```
+
+### USERS
+
+The base url for user endpoints is **/v1/users**
+
+##### <span style="color:blue">GET [ALL USERS]</span>
+
+```
+https://music-meteorology-development.herokuapp.com/v1/users
+https://music-meteorology-production.herokuapp.com/v1/users
+```
+
+- JWT protected (header) :x:
+- payload (body) :x:
+
+<span style="color:red">Get Users Response (200 OK)</span>:
+
+```
+{
+    "users": [
+        {
+            "id": 1,
+            "email": "firstname.lastname@pm.me",
+            "spotify_user_id": "j3553svv444by33k1dqo189v",
+            "user_spotify_api_key": "BQCYlQlNNQRvqFCeNL_XyPzElQoTf66R3lyaHnEHkshqk92oDcGWLrlGDFyGMoCVNg_t6oFpnbE8ELSc44sdsfAwl_DucbDqp7xUrR4W2eDdqv3Ze1Ph7r0g5ITOhno0v9ZSo958LhiEyCi3-5h5jiZQrlg9bgSfDaoj7yaGSnZsyXNM9mJjfBkzXhOfC5Fr45ohiS64Hi_p_pgw",
+            "date_of_birth": "1990-08-09",
+            "spotify_product_type": "premium",
+            "display_name": "Firstname",
+            "country": "DE",
+            "profile_image_url": null
+        },
+        {
+            "id": 21,
+            "email": "firstname.lastname2@pm.me",
+            "spotify_user_id": "j3553svv444gdfdfdf565tzv",
+            "user_spotify_api_key": "BQCYlQlNNdfdFSR54XyPzElQoTf66R3lyaHnEHkshqk92oDcGWLrlGDFyGMoCVNg_t6oFpnbE8ELSc44sdsfAwl_DucbDqp7xUrR4W2eDdqv3Ze1Ph7r0g5ITOhno0v9ZSo958LhiEyCi3-5h5jiZQrlg9bgSfDaoj7yaGSnZsyXNM9mJjfBkzXhOfC5Fr45ohiS64Hi_p_pgw",
+            "date_of_birth": "1995-02-10",
+            "spotify_product_type": "premium",
+            "display_name": "Firstname",
+            "country": "EN",
+            "profile_image_url": null
+        }
+    ]
+}
+```
 
 #### JSON Responses
 
