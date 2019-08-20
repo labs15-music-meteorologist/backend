@@ -6,7 +6,7 @@ const ValidateMiddleware = require('../middlewares/validate-middleware.js');
 
 /* GET ALL USERS */
 router.get('/', (req, res) => {
-  Users.getUsers()
+  Users.find()
     .then(users => {
       res.status(200).json({ users: users });
     })
