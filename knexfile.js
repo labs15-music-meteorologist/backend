@@ -1,60 +1,33 @@
-// Update with your config settings.
-/* require('dotenv').config(); */
-
 module.exports = {
   development: {
-    client: 'pg',
+    client: 'sqlite3',
+    useNullAsDefault: true, // needed for sqlite
     connection: {
-      database: process.env.DATABASE_DB,
-      user: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,
+      filename: './data/splitthebill.db3',
     },
-    useNullAsDefault: true,
     migrations: {
-      directory: './src/data/migrations',
-      tableName: 'knex_migrations',
+      directory: './data/migrations',
     },
     seeds: {
-      directory: './src/data/seeds',
+      directory: './data/seeds',
+    },
+    // needed to use foreign keys
+    pool: {
+      afterCreate: (conn, done) => {
+        conn.run('PRAGMA foreign_keys = ON', done);
+      },
     },
   },
-
-  deployeddevelopment: {
+  production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
     migrations: {
-      directory: './src/data/migrations/20190815230230_bootstrap.js',
+      directory: './data/migrations',
       tableName: 'knex_migrations',
     },
     seeds: {
-      directory: './src/data/seeds',
-    },
-  },
-
-  staging: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
-    useNullAsDefault: true,
-    migrations: {
-      directory: './src/data/migrations',
-      tableName: 'knex_migrations',
-    },
-    seeds: {
-      directory: './src/data/seeds',
-    },
-  },
-
-  stagingtwo: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
-    useNullAsDefault: true,
-    migrations: {
-      directory: './src/data/migrations',
-      tableName: 'knex_migrations',
-    },
-    seeds: {
-      directory: './src/data/seeds',
+      directory: './data/seeds',
     },
   },
 };
