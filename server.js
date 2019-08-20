@@ -1,14 +1,14 @@
 const express = require('express');
 const helmet = require('helmet');
-const moment = require('moment');
 const cors = require('cors');
+const morgan = require('morgan');
 
 const UsersRouter = require('./api/users/user-router.js');
 const server = express();
 
-server.use(Requestlogger);
 server.use(express.json());
 server.use(helmet());
+server.use(morgan('dev'));
 server.use(cors());
 
 server.get('/', (req, res) => {
@@ -19,15 +19,6 @@ server.get('/', (req, res) => {
   );
 });
 
-server.use('/api/users', UsersRouter);
-
-// Custom logging middleware for incoming requests
-function Requestlogger(req, res, next) {
-  console.log(
-    `${req.method} to http://localhost/5000${req.path} at `,
-    moment().format(),
-  );
-  next();
-}
+server.use('/v1/users', UsersRouter);
 
 module.exports = server;
