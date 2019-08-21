@@ -20,7 +20,7 @@ function validateUser(req, res, next) {
     },
   } = req;
 
-  if (!body) {
+  if (Object.keys(body).length === 0) {
     res.status(400).json({ warning: 'Missing user data entirely.' });
   } else if (
     !email ||
@@ -53,10 +53,8 @@ async function validateUserId(req, res, next) {
           info: `The user with the id ${id} was not found during validation.`,
         });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        error: 'An error occurred during validation of the user. ' + error,
-      });
+    res.status(500).json({
+      error: 'An error occurred during validation of the user. ' + error,
+    });
   }
 }
