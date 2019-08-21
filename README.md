@@ -447,6 +447,14 @@ npm start
 
 ```
 
+## Testing
+
+Tests for the Backend are beeing handled through the npm module supertest. To run the tests use the following start script:
+
+```
+npm run test
+```
+
 ## Architecture and Workflow
 
 ![](documentation/database-schema.png)
