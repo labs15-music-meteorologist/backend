@@ -286,6 +286,61 @@ https://music-meteorology-staging2.herokuapp.com/v1/users/3
 }
 ```
 
+#### Middleware
+
+Middleware is divided into 2 different types:
+
+- Middleware that restricts access to certain routes for authorization :x: (Soon)
+- Middleware that validates request body payloads :heavy_check_mark:
+
+Whenever for a route a certain ID or Resource object like a user is required these routes are protected by validation middleware and returning generic responses when used by badly shaped requests. Thus every endpoint documented has a indication of what generic validation responses it will provide when used incorrectly.
+
+Authorization is handled through Java Web Token (JWT). A token authorizes a user to access JWT protected routes for 1 hour until it a relogin needs to happen.
+
+To submit a JWT along a HTTP request add the JWT that can be acquired through the unprotected login route and then set it as "Authorization" "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxMSwiZW1haWwiOiJrZXZpbkB0ZXN0LmNvbTY2NiIsImlhdCI6MTU2NDY4MzgzMiwiZXhwIjoxNTY0Njg3NDMyfQ.t3LhcZ5VppqZMSPL4LAWcllEqKzI9nTZ8VNseMZzoVE" as a Header for the request.
+
+The JWT is randomly generated and only the specific provided one from login will be valid.
+
+<span style="color:red">Bad Authorization Response (401 UNAUTHORIZED)</span>:
+
+```
+{
+    "warning": "Authorization failed. Access denied!"
+}
+```
+
+<span style="color:red">User validation no body data (400 BAD REQUEST)</span>:
+
+```
+{
+    "warning": "Missing user data entirely."
+}
+```
+
+<span style="color:red">User validation user data not complete (400 BAD REQUEST)</span>:
+
+```
+{
+    "warning": "Missing required email or spotify_user_id or user_spotify_api_key or date_of_birth or spotify_product_type or display_name or country information for an user."
+}
+```
+
+<span style="color:red">User ID validation user not found (404 NOT FOUND)</span>:
+
+```
+{
+    "info": "The user with the id 3 was not found during validation."
+}
+```
+
+<span style="color:red">User ID validation server error (500 SERVER ERROR)</span>:
+
+```
+{
+    "error": "An error occurred during validation of the user."
+}
+```
+
 #### JSON Responses
 
 For JSON responses there are 4 different content types available:
@@ -380,7 +435,7 @@ To start the application simply run this command in command line on the same fol
 
 ```
 
-npm run development
+npm run server
 
 ```
 
