@@ -51,7 +51,7 @@ router.get('/:id', ValidateMiddleware.validateUserId, async (req, res) => {
 });
 
 /* ADD A NEW USER */
-router.post('/register', (req, res) => {
+router.post('/register', ValidateMiddleware.validateUser, (req, res) => {
   let {
     email,
     spotify_user_id,
