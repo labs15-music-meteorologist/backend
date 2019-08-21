@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const morgan = require('morgan');
+require('dotenv').config();
 
 const UsersRouter = require('./api/users/user-router.js');
 const server = express();
