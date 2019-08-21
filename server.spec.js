@@ -35,8 +35,6 @@ describe('GET A SINGLE USER OK', () => {
   });
 });
 
-/* ENDPOINT TEST API RUNNING */
-
 /* VALIDATION TESTS REGISTER A USER*/
 describe('REGISTER A USER NO BODY', () => {
   it('returns 400 No Body Provided', () => {

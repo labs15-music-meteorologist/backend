@@ -455,6 +455,19 @@ Tests for the Backend are beeing handled through the npm module supertest. To ru
 npm run test
 ```
 
+## Reporting / Logging
+
+For reporting of applications errors [Sentry](https://sentry.io/) is used. A new route that will always throw an error was established called:
+
+```
+https://music-meteorology-production.herokuapp.com/debug-sentry
+https://music-meteorology-development.herokuapp.com/debug-sentry
+https://music-meteorology-staging1.herokuapp.com/debug-sentry
+https://music-meteorology-staging2.herokuapp.com/debug-sentry
+```
+
+Bugs with sentry are visible within the dashboard and can be intraged into a Slack channel.
+
 ## Architecture and Workflow
 
 ![](documentation/database-schema.png)
