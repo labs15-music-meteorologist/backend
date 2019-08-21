@@ -343,6 +343,7 @@ DATABASE_URL=provided postgres connectioN URI
 PORT=5000
 DB_ENV=development OR deployedDevelopment OR staging1 OR staging2 or production
 SERVER_URL=https://music-meteorology-development.herokuapp.com/ or https://music-meteorology-production.herokuapp.com/ or https://music-meteorology-staging1.herokuapp.com/ or https://music-meteorology-staging2.herokuapp.com/
+DEPLOYMENT=development or production or staging1 or staging2
 ```
 
 For a local installation and connection to a local PostgreSQL database accepted environmental variables are:
@@ -356,6 +357,7 @@ DATABASE_USER=your_postgres_database_user
 DATABASE_PASSWORD=your_postgres_database_password
 DB_ENV=development
 SERVER_URL=localhost
+DEPLOYMENT=localhost
 ```
 
 ### Installing the Application

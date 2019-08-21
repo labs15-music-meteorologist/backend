@@ -14,7 +14,7 @@ server.use(cors());
 server.get('/', (req, res) => {
   res.send(
     `Welcome to the ${
-      process.env.DB_ENV
+      process.env.DEPLOYMENT
     } environment API of Music Meteorologist!`,
   );
 });
