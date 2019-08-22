@@ -54,7 +54,7 @@ async function validateUserId(req, res, next) {
         });
   } catch (error) {
     res.status(500).json({
-      error: 'An error occurred during validation of the user. ' + error,
+      error: 'An error occurred during validation of the user.',
     });
   }
 }

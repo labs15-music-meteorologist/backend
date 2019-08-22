@@ -13,8 +13,7 @@ router.get('/', (req, res) => {
     .catch(error => {
       res.status(500).json({
         error:
-          'An error occurred during fetching all users. That one is on us! ' +
-          error,
+          'An error occurred during fetching all users. That one is on us!',
       });
     });
 });
@@ -44,8 +43,7 @@ router.get('/:id', ValidateMiddleware.validateUserId, async (req, res) => {
     } = req;
 
     res.status(500).json({
-      error:
-        `An error occurred during fetching an user with the id ${id}. ` + error,
+      error: `An error occurred during fetching an user with the id ${id}.`,
     });
   }
 });
@@ -97,8 +95,7 @@ router.post('/register', ValidateMiddleware.validateUser, (req, res) => {
       })
       .catch(error => {
         res.status(500).json({
-          error:
-            'An error occurred during the creation of a new user. ' + error,
+          error: 'An error occurred during the creation of a new user.',
         });
       });
   } else {
@@ -127,7 +124,7 @@ router.delete('/:id', ValidateMiddleware.validateUserId, async (req, res) => {
     } = req;
 
     res.status(500).json({
-      message: `The user with the id of ${id} could not be deleted. ` + error,
+      message: `The user with the id of ${id} could not be deleted.`,
     });
   }
 });
@@ -168,9 +165,7 @@ router.put(
             message: `The user with the id ${id} has been successfully updated!`,
           })
         : res.status(500).json({
-            error:
-              `An error occurred within the database thus the user with the id ${id} could not be updated. ` +
-              error,
+            error: `An error occurred within the database thus the user with the id ${id} could not be updated.`,
           });
     } catch (error) {
       const {
@@ -178,9 +173,7 @@ router.put(
       } = req;
 
       res.status(500).json({
-        error:
-          `An error occurred during updating the user with the id ${id}.` +
-          error,
+        error: `An error occurred during updating the user with the id ${id}.`,
       });
     }
   },
