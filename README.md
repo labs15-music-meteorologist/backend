@@ -25,10 +25,11 @@ Music Meteorologist provides a web application where users can play a guessing g
 
 All endpoints are also documented in the automated Postman documentations:
 
-- [Production]() :x:
-- [Development](https://documenter.getpostman.com/view/8038461/SVfJUXBn) :warning:
-- [Staging1](https://documenter.getpostman.com/view/8038461/SVfJUrWt) :heavy_check_mark:
-- [Staging2]() :x:
+- [Local Installation](https://documenter.getpostman.com/view/8038461/SVfMS9p7) :heavy_check_mark:
+- [Production](https://documenter.getpostman.com/view/8038461/SVfMS9p4) :heavy_check_mark:
+- [Development](https://documenter.getpostman.com/view/8038461/SVfMS9p3) :heavy_check_mark:
+- [Staging1](https://documenter.getpostman.com/view/8038461/SVfMS9p5) :heavy_check_mark:
+- [Staging2](https://documenter.getpostman.com/view/8038461/SVfMS9p6) :heavy_check_mark:
 
 The endpoints URLs are environment specific and contain a word that reflects the project/environment on Heroku.
 
