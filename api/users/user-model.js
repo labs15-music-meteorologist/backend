@@ -3,6 +3,7 @@ const db = require('../../data/db-config.js');
 module.exports = {
   find,
   findById,
+  findBySpotifyId,
   findBy,
   findByEmail,
   add,
@@ -17,6 +18,14 @@ function find() {
 function findById(id) {
   return db('users')
     .where('id', id)
+    .first()
+    .then(user => (user ? user : null));
+}
+
+function findBySpotifyId(spotify_id) {
+  console.log(spotify_id);
+  return db('users')
+    .where('spotify_user_id', spotify_id)
     .first()
     .then(user => (user ? user : null));
 }
