@@ -48,6 +48,40 @@ router.get('/:id', ValidateMiddleware.validateUserId, async (req, res) => {
   }
 });
 
+/* GET A USER BY Spofity ID */
+router.get('/spotify/:id', async (req, res) => {
+  try {
+    const {
+      params: { id },
+    } = req;
+    const user = await Users.findBySpotifyId(id);
+    user
+      ? res.status(200).json({
+          id: user.id,
+          email: user.email,
+          spotify_user_id: user.spotify_user_id,
+          user_spotify_api_key: user.user_spotify_api_key,
+          date_of_birth: user.date_of_birth,
+          spotify_product_type: user.spotify_product_type,
+          display_name: user.display_name,
+          country: user.country,
+          profile_image_url: user.profile_image_url,
+        })
+      : res.status(404).json({
+          info: `The user with the spotify_id ${id} was not found.`,
+        });
+  } catch (error) {
+    const {
+      user: { id },
+    } = req;
+
+    res.status(500).json({
+      error:
+        `An error occurred during fetching an user with the id ${id}.` + error,
+    });
+  }
+});
+
 /* ADD A NEW USER */
 router.post('/register', ValidateMiddleware.validateUser, (req, res) => {
   let {
