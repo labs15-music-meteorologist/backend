@@ -1,6 +1,7 @@
 # Music Meteorologist Frontend
 
 Frontend Deployment (Coming Soon)
+Release v1.0
 
 [Visit Backend](https://music-meteorology-development.herokuapp.com/) (See endpoints below)
 
