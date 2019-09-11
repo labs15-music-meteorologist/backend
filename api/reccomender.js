@@ -7,6 +7,7 @@ const DS_URL = process.env.DS_URL
 router.post('/' , async (req,res)=> {
   let r = req.body
   let output = {}
+  // TODO: add additional checks that all fields are not undefined or null
   let audioFeatures = {
     tempo:r.tempo,
     key:r.key,
@@ -21,7 +22,7 @@ router.post('/' , async (req,res)=> {
     valence:r.valence,
   }
   try {
-    console.log("AUDIO FEATURES",audioFeatures)
+    // TODO: turn this into a post request and send in audioFeatures in the request body
     await axios.get(DS_URL, {
     }).then(res => {
       output = res.data
