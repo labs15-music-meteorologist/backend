@@ -6,6 +6,8 @@ const morgan = require('morgan');
 require('dotenv').config();
 
 const UsersRouter = require('./api/users/user-router.js');
+const ReccomenderRouter = require('./api/reccomender.js');
+
 
 const server = express();
 const Sentry = require('@sentry/node');
@@ -42,5 +44,7 @@ server.use(function onError(err, req, res, next) {
 });
 
 server.use('/v1/users', UsersRouter);
+server.use('/v1/reccomender', ReccomenderRouter);
+
 
 module.exports = server;
