@@ -26,6 +26,7 @@
   "homepage": "https://github.com/labs15-music-meteorologist/backend#readme",
   "dependencies": {
     "@sentry/node": "^5.6.2",
+    "axios": "^0.19.0",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
