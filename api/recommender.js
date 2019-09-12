@@ -46,9 +46,17 @@ router.post('/' , async (req,res)=> {
 router.post('/mock',(req,res)=>{
   const r = req.body.audio_features
   const mockData = {
-      score: .84,
-      recommendations:["spotify:track:0aULRU35N9kTj6O1xMULRR","spotify:track:0VgkVdmE4gld66l8iyGjgx","spotify:track:5ry2OE6R2zPQFDO85XkgRb"]
-    }
+    "songs": [
+      {
+        "similarity": 0.9999787324793246,
+        "values": "5d4zl1SVfjPykq0yfsdil6"
+      },
+      {
+        "similarity": 0.9999746088570707,
+        "values": "32bZwIZbRYe4ImC7PJ8s2A"
+      }
+    ]
+  }
   res.status(200).json(mockData)
 })
 
