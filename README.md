@@ -481,7 +481,9 @@ For testing of the server and endpoints supertest and JEST was used.
 
 ## Project Requirements and Documentation
 
-Coming Soon
+### Database Schema
+
+![](documentation/db-schema.png)
 
 ## Authors
 
