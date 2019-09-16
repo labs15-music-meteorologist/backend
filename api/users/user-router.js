@@ -66,6 +66,7 @@ router.get('/spotify/:id', async (req, res) => {
           display_name: user.display_name,
           country: user.country,
           profile_image_url: user.profile_image_url,
+          spotify_playlist_id: user.spotify_playlist_id,
         })
       : res.status(404).json({
           info: `The user with the spotify_id ${id} was not found.`,
