@@ -36,6 +36,7 @@ router.get('/:id', ValidateMiddleware.validateUserId, async (req, res) => {
       display_name: user.display_name,
       country: user.country,
       profile_image_url: user.profile_image_url,
+      spotify_playlist_id: user.spotify_playlist_id,
     });
   } catch (error) {
     const {
@@ -94,6 +95,7 @@ router.post('/register', ValidateMiddleware.validateUser, (req, res) => {
     display_name,
     country,
     profile_image_url,
+    spotify_playlist_id,
   } = req.body;
 
   if (
@@ -114,6 +116,7 @@ router.post('/register', ValidateMiddleware.validateUser, (req, res) => {
       display_name,
       country,
       profile_image_url,
+      spotify_playlist_id,
     })
       .then(newUser => {
         res.status(201).json({
@@ -126,11 +129,12 @@ router.post('/register', ValidateMiddleware.validateUser, (req, res) => {
           display_name: newUser.display_name,
           country: newUser.country,
           profile_image_url: newUser.profile_image_url,
+          spotify_playlist_id: newUser.spotify_playlist_id,
         });
       })
       .catch(error => {
         res.status(500).json({
-          error: 'An error occurred during the creation of a new user.',
+          error: 'An error occurred during the creation of a new user.' + error,
         });
       });
   } else {
@@ -181,6 +185,7 @@ router.put(
           display_name,
           country,
           profile_image_url,
+          spotify_playlist_id,
         },
         user: { id },
       } = req;
@@ -194,6 +199,7 @@ router.put(
         display_name,
         country,
         profile_image_url,
+        spotify_playlist_id,
       });
       return successFlag > 0
         ? res.status(200).json({
