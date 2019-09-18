@@ -17,6 +17,7 @@ function validateUser(req, res, next) {
       display_name,
       country,
       profile_image_url,
+      spotify_playlist_id,
     },
   } = req;
 
