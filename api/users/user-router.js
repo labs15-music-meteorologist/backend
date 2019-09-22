@@ -214,7 +214,9 @@ router.put(
       } = req;
 
       res.status(500).json({
-        error: `An error occurred during updating the user with the id ${id}.`,
+        error:
+          `An error occurred during updating the user with the id ${id}.` +
+          error,
       });
     }
   },
