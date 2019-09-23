@@ -24,23 +24,21 @@ router.post('/', async (req, res) => {
     time_signature: 4,
     valence: 0.149,
   }; */
-  try {
-    // TODO: turn this into a post request and send in audioFeatures in the request body
-    // TODO: Write real error messages
-    await axios
-      .post(DS_URL, { audio_features: r })
-      .then(res => {
-        output = res.data;
-      })
-      .catch(error => {
-        console.log('THENCATCHERROR', error);
-        res.status(400).json(error);
-      });
-    res.status(200).json(output);
-  } catch (error) {
-    console.log('TRYCATCHERROR', error);
-    res.status(400).json(error);
-  }
+
+  // TODO: turn this into a post request and send in audioFeatures in the request body
+  // TODO: Write real error messages
+
+  axios
+    .post(DS_URL, { audio_features: r })
+    .then(response => {
+      output = response.data;
+      console.log('AXIOSTHEN', output);
+      res.status(200).json(output);
+    })
+    .catch(error => {
+      console.log('AXIOSCATCHERROR', error);
+      res.status(400).json(error);
+    });
 });
 
 // Mock endpoint to simulate DS endpoint
