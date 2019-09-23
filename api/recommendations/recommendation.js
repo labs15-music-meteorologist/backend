@@ -46,17 +46,28 @@ router.post('/' , async (req,res)=> {
 router.post('/mock',(req,res)=>{
   const r = req.body.audio_features
   const mockData = {
-    "songs": [
-      {
-        "similarity": 0.9999787324793246,
-        "values": "5d4zl1SVfjPykq0yfsdil6"
-      },
-      {
-        "similarity": 0.9999746088570707,
-        "values": "32bZwIZbRYe4ImC7PJ8s2A"
-      }
-    ]
+      "songs": [
+          {
+              "similarity": [
+                  0.9999817191653122
+              ],
+              "values": "68ELfMDJjmv9xCEJ7h92JI"
+          },
+          {
+              "similarity": [
+                  0.999981179860223
+              ],
+              "values": "2dIoNxZw3MtSfgqC42Isj8"
+          },
+          {
+              "similarity": [
+                  0.999981134462956
+              ],
+              "values": "565Ucgjk9QpwcQGhPTI9ts"
+          }
+      ]
   }
+
   res.status(200).json(mockData)
 })
 
