@@ -33,10 +33,12 @@ router.post('/', async (req, res) => {
         output = res.data;
       })
       .catch(error => {
+        console.log('THENCATCHERROR', error);
         res.status(400).json(error);
       });
     res.status(200).json(output);
   } catch (error) {
+    console.log('TRYCATCHERROR', error);
     res.status(400).json(error);
   }
 });
