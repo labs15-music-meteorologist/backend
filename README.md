@@ -1,7 +1,6 @@
 # Music Meteorologist Frontend
 
 Frontend Deployment (Coming Soon)
-Release v1.0
 
 [Visit Backend](https://music-meteorology-development.herokuapp.com/) (See endpoints below)
 
@@ -101,19 +100,17 @@ https://music-meteorology-staging2.herokuapp.com/v1/users
 }
 ```
 
-##### <span style="color:blue">GET [A USER BY ID]</span>
+##### <span style="color:blue">GET [A USER BY SPOTIFY ID]</span>
 
 ```
-https://music-meteorology-production.herokuapp.com/v1/users/1
-https://music-meteorology-development.herokuapp.com/v1/users/1
-https://music-meteorology-staging1.herokuapp.com/v1/users/1
-https://music-meteorology-staging2.herokuapp.com/v1/users/1
+https://music-meteorology-production.herokuapp.com/v1/users/spotify/jgdpq16w0y44by33k1dqo189v
+https://music-meteorology-development.herokuapp.com/v1/users/spotify/jgdpq16w0y44by33k1dqo189v
+https://music-meteorology-staging1.herokuapp.com/v1/users/spotify/jgdpq16w0y44by33k1dqo189v
+https://music-meteorology-staging2.herokuapp.com/v1/users/spotify/jgdpq16w0y44by33k1dqo189v
 ```
 
 - JWT protected (header) :x:
 - payload (body) :x:
-- ID is defined with used route at the end
-- USER ID gets validated with validateUserId middleware - extra responses below
 
 <span style="color:red">Found user Response (200 OK)</span>:
 
@@ -127,7 +124,8 @@ https://music-meteorology-staging2.herokuapp.com/v1/users/1
     "spotify_product_type": "premium",
     "display_name": "Sascha",
     "country": "DE",
-    "profile_image_url": null
+    "profile_image_url": null,
+    "spotify_playlist_id": null
 }
 ```
 
@@ -135,7 +133,7 @@ https://music-meteorology-staging2.herokuapp.com/v1/users/1
 
 ```
 {
-    "info": "The user with the id 1 was not found during validation."
+    "info": "The user with the spotify_id 1 was not found."
 }
 ```
 
@@ -147,13 +145,69 @@ https://music-meteorology-staging2.herokuapp.com/v1/users/1
 }
 ```
 
+##### <span style="color:blue">GET [A USER BY ID]</span>
+
+```
+
+https://music-meteorology-production.herokuapp.com/v1/users/1
+https://music-meteorology-development.herokuapp.com/v1/users/1
+https://music-meteorology-staging1.herokuapp.com/v1/users/1
+https://music-meteorology-staging2.herokuapp.com/v1/users/1
+
+```
+
+- JWT protected (header) :x:
+- payload (body) :x:
+- ID is defined with used route at the end
+- USER ID gets validated with validateUserId middleware - extra responses below
+
+<span style="color:red">Found user Response (200 OK)</span>:
+
+```
+
+{
+"id": 1,
+"email": "sascha.majewsky@pm.me",
+"spotify_user_id": "jgdpq16w0y44by33k1dqo189v",
+"user_spotify_api_key": "BQCYlQlNNQRvqFCeNL_XyPzElQoTf66R3lyaHnEHkshqk92oDcGWLrlGDFyGMoCVNg_t6oFpnbE8ELScwSaGuQGxAwl_DucbDqp7xUrR4W2eDdqv3Ze1Ph7r0g5ITOhno0v9ZSo958LhiEyCi3-5h5jiZQrlg9bgSfDaoj7yaGSnZsyXNM9mJjfBkzXhOfC5Fr45ohiS64Hi_p_pgw",
+"date_of_birth": "1993-08-09",
+"spotify_product_type": "premium",
+"display_name": "Sascha",
+"country": "DE",
+"profile_image_url": null
+}
+
+```
+
+<span style="color:red">Not found Response (404 NOT FOUND)</span>:
+
+```
+
+{
+"info": "The user with the id 1 was not found during validation."
+}
+
+```
+
+<span style="color:red">Server error Response (500 SERVER ERROR)</span>:
+
+```
+
+{
+"error": "An error occurred during fetching an user with the id 1."
+}
+
+```
+
 ##### <span style="color:blue">POST [REGISTER A USER]</span>
 
 ```
+
 https://music-meteorology-production.herokuapp.com/v1/users/register
 https://music-meteorology-development.herokuapp.com/v1/users/register
 https://music-meteorology-staging1.herokuapp.com/v1/users/register
 https://music-meteorology-staging2.herokuapp.com/v1/users/register
+
 ```
 
 - JWT protected (header) :x:
@@ -162,57 +216,67 @@ https://music-meteorology-staging2.herokuapp.com/v1/users/register
 <span style="color:green">Example Request</span>:
 
 ```
+
 {
-    "email": "test.tester@pm.me",
-    "spotify_user_id": "dagsffrhr",
-    "user_spotify_api_key": "sdasdasdasd",
-    "date_of_birth": "1981-08-01",
-    "spotify_product_type": "premium",
-    "display_name": "Testgg",
-    "country": "UK",
-    "profile_image_url": "testdfdd"
+"email": "test.tester@pm.me",
+"spotify_user_id": "dagsffrhr",
+"user_spotify_api_key": "sdasdasdasd",
+"date_of_birth": "1981-08-01",
+"spotify_product_type": "premium",
+"display_name": "Testgg",
+"country": "UK",
+"profile_image_url": "testdfdd"
 }
+
 ```
 
 <span style="color:red">Created user Response (201 CREATED)</span>:
 
 ```
+
 {
-  "id": 2,
-  "email": "test.tester@pm.me",
-  "spotify_user_id": "dagsffrhr",
-  "user_spotify_api_key": "sdasdasdasd",
-  "date_of_birth": "1981-08-01",
-  "spotify_product_type": "premium",
-  "display_name": "Testgg",
-  "country": "UK",
-  "profile_image_url": "testdfdd"
+"id": 2,
+"email": "test.tester@pm.me",
+"spotify_user_id": "dagsffrhr",
+"user_spotify_api_key": "sdasdasdasd",
+"date_of_birth": "1981-08-01",
+"spotify_product_type": "premium",
+"display_name": "Testgg",
+"country": "UK",
+"profile_image_url": "testdfdd"
 }
+
 ```
 
 <span style="color:red">User data not complete Response (400 BAD REQUEST)</span>:
 
 ```
+
 {
-    "warning": "Not all information were provided to create a new user."
+"warning": "Not all information were provided to create a new user."
 }
+
 ```
 
 <span style="color:red">Server Error Response (500 SERVER ERROR)</span>:
 
 ```
+
 {
-    "error": "An error occurred during the creation of a new user."
+"error": "An error occurred during the creation of a new user."
 }
+
 ```
 
 ##### <span style="color:blue">DELETE [DELETE A USER]</span>
 
 ```
+
 https://music-meteorology-production.herokuapp.com/v1/users/3
 https://music-meteorology-development.herokuapp.com/v1/users/3
 https://music-meteorology-staging1.herokuapp.com/v1/users/3
 https://music-meteorology-staging2.herokuapp.com/v1/users/3
+
 ```
 
 - JWT protected (header) :x:
@@ -222,26 +286,32 @@ https://music-meteorology-staging2.herokuapp.com/v1/users/3
 <span style="color:red">Updated user Response (200 OK)</span>:
 
 ```
+
 {
-    "message": "The user with the id of 3 was successfully deleted."
+"message": "The user with the id of 3 was successfully deleted."
 }
+
 ```
 
 <span style="color:red">Database error Response (500 SERVER ERROR)</span>:
 
 ```
+
 {
-    "error": "The user with the id of 3 could not be deleted."
+"error": "The user with the id of 3 could not be deleted."
 }
+
 ```
 
 ##### <span style="color:blue">PUT [UPDATE A USER]</span>
 
 ```
+
 https://music-meteorology-production.herokuapp.com/v1/users/3
 https://music-meteorology-development.herokuapp.com/v1/users/3
 https://music-meteorology-staging1.herokuapp.com/v1/users/3
 https://music-meteorology-staging2.herokuapp.com/v1/users/3
+
 ```
 
 - JWT protected (header) :x:
@@ -252,40 +322,48 @@ https://music-meteorology-staging2.herokuapp.com/v1/users/3
 <span style="color:green">Example Request</span>:
 
 ```
+
 {
-    "email": "updated.user@pm.me",
-    "spotify_user_id": "update",
-    "user_spotify_api_key": "FromThe",
-    "date_of_birth": "2020-08-01",
-    "spotify_product_type": "premium",
-    "display_name": "Future",
-    "country": "US",
-    "profile_image_url": "nice"
+"email": "updated.user@pm.me",
+"spotify_user_id": "update",
+"user_spotify_api_key": "FromThe",
+"date_of_birth": "2020-08-01",
+"spotify_product_type": "premium",
+"display_name": "Future",
+"country": "US",
+"profile_image_url": "nice"
 }
+
 ```
 
 <span style="color:red">Updated user Response (200 OK)</span>:
 
 ```
+
 {
-    "message": "The user with the id 3 has been successfully updated!"
+"message": "The user with the id 3 has been successfully updated!"
 }
+
 ```
 
 <span style="color:red">Database error Response (500 SERVER ERROR)</span>:
 
 ```
+
 {
-    "error": "An error occurred within the database thus the user with the id 3 could not be updated."
+"error": "An error occurred within the database thus the user with the id 3 could not be updated."
 }
+
 ```
 
 <span style="color:red">Server error Response (500 SERVER ERROR)</span>:
 
 ```
+
 {
-    "error": "An error occurred during updating the user with the id 3."
+"error": "An error occurred during updating the user with the id 3."
 }
+
 ```
 
 #### Middleware
@@ -306,41 +384,51 @@ The JWT is randomly generated and only the specific provided one from login will
 <span style="color:red">Bad Authorization Response (401 UNAUTHORIZED)</span>:
 
 ```
+
 {
-    "warning": "Authorization failed. Access denied!"
+"warning": "Authorization failed. Access denied!"
 }
+
 ```
 
 <span style="color:red">User validation no body data (400 BAD REQUEST)</span>:
 
 ```
+
 {
-    "warning": "Missing user data entirely."
+"warning": "Missing user data entirely."
 }
+
 ```
 
 <span style="color:red">User validation user data not complete (400 BAD REQUEST)</span>:
 
 ```
+
 {
-    "warning": "Missing required email or spotify_user_id or user_spotify_api_key or date_of_birth or spotify_product_type or display_name or country information for an user."
+"warning": "Missing required email or spotify_user_id or user_spotify_api_key or date_of_birth or spotify_product_type or display_name or country information for an user."
 }
+
 ```
 
 <span style="color:red">User ID validation user not found (404 NOT FOUND)</span>:
 
 ```
+
 {
-    "info": "The user with the id 3 was not found during validation."
+"info": "The user with the id 3 was not found during validation."
 }
+
 ```
 
 <span style="color:red">User ID validation server error (500 SERVER ERROR)</span>:
 
 ```
+
 {
-    "error": "An error occurred during validation of the user."
+"error": "An error occurred during validation of the user."
 }
+
 ```
 
 #### JSON Responses
@@ -401,6 +489,7 @@ PORT=5000
 DB_ENV=development OR deployedDevelopment OR staging1 OR staging2 or production
 SERVER_URL=https://music-meteorology-development.herokuapp.com/ or https://music-meteorology-production.herokuapp.com/ or https://music-meteorology-staging1.herokuapp.com/ or https://music-meteorology-staging2.herokuapp.com/
 DEPLOYMENT=development or production or staging1 or staging2
+
 ```
 
 For a local installation and connection to a local PostgreSQL database accepted environmental variables are:
@@ -408,6 +497,7 @@ For a local installation and connection to a local PostgreSQL database accepted 
 .env file
 
 ```
+
 PORT=5000
 DATABASE_DB=your_postgres_database_name
 DATABASE_USER=your_postgres_database_user
@@ -415,6 +505,7 @@ DATABASE_PASSWORD=your_postgres_database_password
 DB_ENV=development
 SERVER_URL=localhost
 DEPLOYMENT=localhost
+
 ```
 
 ### Installing the Application
@@ -454,7 +545,9 @@ npm start
 Tests for the Backend are beeing handled through the npm module supertest. To run the tests use the following start script:
 
 ```
+
 npm run test
+
 ```
 
 ## Reporting / Logging
@@ -462,10 +555,12 @@ npm run test
 For reporting of applications errors [Sentry](https://sentry.io/) is used. A new route that will always throw an error was established called:
 
 ```
+
 https://music-meteorology-production.herokuapp.com/debug-sentry
 https://music-meteorology-development.herokuapp.com/debug-sentry
 https://music-meteorology-staging1.herokuapp.com/debug-sentry
 https://music-meteorology-staging2.herokuapp.com/debug-sentry
+
 ```
 
 Bugs with sentry are visible within the dashboard and can be intraged into a Slack channel.
@@ -482,7 +577,9 @@ For testing of the server and endpoints supertest and JEST was used.
 
 ## Project Requirements and Documentation
 
-Coming Soon
+### Database Schema
+
+![](documentation/db-schema.png)
 
 ## Authors
 
@@ -505,6 +602,10 @@ Coming Soon
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+```
+
+```
 
 ```
 

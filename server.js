@@ -6,6 +6,7 @@ const morgan = require('morgan');
 require('dotenv').config();
 
 const UsersRouter = require('./api/users/user-router.js');
+const RecommenderRouter = require('./api/recommendations/recommendation.js');
 
 const server = express();
 const Sentry = require('@sentry/node');
@@ -22,9 +23,7 @@ server.use(cors());
 
 server.get('/', function rootHandler(req, res) {
   res.send(
-    `Welcome to the ${
-      process.env.DEPLOYMENT
-    } environment API of Music Meteorologist!`,
+    `Welcome to the ${process.env.DEPLOYMENT} environment API of Music Meteorologist!`,
   );
 });
 
@@ -42,5 +41,6 @@ server.use(function onError(err, req, res, next) {
 });
 
 server.use('/v1/users', UsersRouter);
+server.use('/v1/recommender', RecommenderRouter);
 
 module.exports = server;
