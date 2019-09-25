@@ -1,6 +1,7 @@
 # Music Meteorologist Frontend
 
-Frontend Deployment (Coming Soon)
+[Frontend Deployment](https://music-meteorologist.com/)
+[Frontend GitHub](https://github.com/labs15-music-meteorologist/frontend)
 
 [Visit Backend](https://music-meteorology-development.herokuapp.com/) (See endpoints below)
 
@@ -484,11 +485,12 @@ On Heroku the Config Vars accepted configurations are:
 
 ```
 
-DATABASE_URL=provided postgres connectioN URI
+DATABASE_URL=provided postgreSQL connection URI
 PORT=5000
 DB_ENV=development OR deployedDevelopment OR staging1 OR staging2 or production
 SERVER_URL=https://music-meteorology-development.herokuapp.com/ or https://music-meteorology-production.herokuapp.com/ or https://music-meteorology-staging1.herokuapp.com/ or https://music-meteorology-staging2.herokuapp.com/
 DEPLOYMENT=development or production or staging1 or staging2
+DS_URL=https://music-meteorologist-ds.herokuapp.com/
 
 ```
 
@@ -505,7 +507,7 @@ DATABASE_PASSWORD=your_postgres_database_password
 DB_ENV=development
 SERVER_URL=localhost
 DEPLOYMENT=localhost
-
+DS_URL=https://music-meteorologist-ds.herokuapp.com/
 ```
 
 ### Installing the Application
@@ -523,6 +525,16 @@ npm i
 ```
 
 Now a package.lock and node_modules folder should be present containing all external modules and dependencies to start up the application.
+
+To set up the database the migration and seed files need to be run. This can be achieved by executing the following terminal commands in the project.
+
+```
+cd into projectpath
+npx knex migrate:latest
+npx knex seed:run
+```
+
+Now the database was setup and was populated by seed dummy data
 
 To start the application simply run this command in command line on the same folder level where package.json is located.
 
@@ -602,11 +614,3 @@ For testing of the server and endpoints supertest and JEST was used.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
-```
-
-```
-
-```
-
-```
